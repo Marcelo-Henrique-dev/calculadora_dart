@@ -30,8 +30,10 @@ double calcular(String expressao) {
   if ('('.allMatches(expressao).length != ')'.allMatches(expressao).length) {
     throw "Parênteses não fechados.";
   }
-  if('('.allMatches(expressao).length < 2){
-    throw "Digite mais de um valor";
+  final numeros = RegExp(r'\d+\.?\d*').allMatches(expressao);
+
+  if (numeros.length < 2) {
+    throw "Digite pelo menos dois números para realizar um cálculo.";
   }
 
   final tokens = RegExp(r'(\d+\.?\d*)|([\+\-\*\/\(\)])')
